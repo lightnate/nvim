@@ -210,3 +210,84 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 
+" ===
+" ===  move code
+" ===
+noremap <silent> <C-k> :call <SID>moveup_line()<CR>
+noremap <silent> <C-j> :call <SID>movedown_line()<CR>
+inoremap <silent> <C-k> <ESC>:call <SID>moveup_line()<CR>a
+inoremap <silent> <C-j> <ESC>:call <SID>movedown_line()<CR>a
+vnoremap <silent> <C-k> :call <SID>moveup_multlines()<CR>gv
+vnoremap <silent> <C-j> :call <SID>movedown_multlines()<CR>gv
+
+function! s:moveup_line()
+	let cur_pos = getpos('.')	
+	
+	if cur_pos[1] == 1
+		return
+	endif
+	let tgt_line = cur_pos[1] - 1	
+	let tmp = getline(tgt_line)		
+	call setline(tgt_line,getline(cur_pos[1]))	
+	call setline(cur_pos[1],tmp)	
+	let cur_pos[1] -= 1	
+	call setpos('.',cur_pos)	
+endfunction
+
+function! s:movedown_line()
+	let cur_pos = getpos('.')	
+	
+	if cur_pos[1] == line('$')
+		return
+	endif
+	let tgt_line = cur_pos[1] + 1	
+	let tmp = getline(tgt_line)		
+	call setline(tgt_line,getline(cur_pos[1]))	
+	call setline(cur_pos[1],tmp)	
+	let cur_pos[1] += 1	
+	call setpos('.',cur_pos)	
+endfunction
+
+function! s:moveup_multlines() range
+	
+	let start_mark = getpos("'<")
+	let end_mark = getpos("'>")
+	
+	if start_mark[1] == 1
+		return
+	endif
+	
+	let save_curpos = getpos('.')
+	let buffer_lines = getline(start_mark[1],end_mark[1])
+	call add(buffer_lines, getline(start_mark[1] - 1))
+	call setline(start_mark[1]-1,buffer_lines)
+	
+	let start_mark[1] -= 1
+	let end_mark[1] -= 1
+	let save_curpos[1] -= 1
+	call setpos("'<",start_mark)
+	call setpos("'>",end_mark)
+	call setpos('.',save_curpos)
+endfunction
+
+function! s:movedown_multlines() range
+	
+	let start_mark = getpos("'<")
+	let end_mark = getpos("'>")
+	
+	if end_mark[1] == line('$')
+		return
+	endif
+	
+	let save_curpos = getpos('.')
+	let buffer_lines = [getline(end_mark[1] + 1)]
+	call extend(buffer_lines, getline(start_mark[1],end_mark[1]) )
+	call setline(start_mark[1],buffer_lines)
+	
+	let start_mark[1] += 1
+	let end_mark[1] += 1
+	let save_curpos[1] += 1
+		call setpos("'<",start_mark)
+	call setpos("'>",end_mark)
+	call setpos('.',save_curpos)
+endfunction
