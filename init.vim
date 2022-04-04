@@ -27,7 +27,8 @@ vnoremap ;; <Esc>
 " map start & end
 nnoremap <C-h> ^
 nnoremap <C-l> $
-inoremap <C-h> <Esc>I
+" TODO: FIX
+" inoremap <C-h> <Esc>I
 inoremap <C-l> <Esc>A
 vnoremap <C-h> ^
 vnoremap <C-l> $
@@ -43,8 +44,15 @@ call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
 
+" vim theme
+Plug 'tomasiser/vim-code-dark'
+Plug 'vim-airline/vim-airline'
+
 call plug#end()
 
+" theme config
+colorscheme codedark
+let g:airline_theme = 'codedark'
 
 " ===
 " ===  coc.nvim
