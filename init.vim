@@ -3,7 +3,7 @@
 " ===
 set encoding=utf-8
 set number
-" set relativenumber
+set relativenumber
 set ignorecase
 set hidden
 set updatetime=150
@@ -16,6 +16,10 @@ set shortmess+=c
 " ===
 " === vim map
 " ===
+
+" map leader to space 
+let mapleader=" "
+
 " Save & quit
 nnoremap Q :q<CR>
 nnoremap S :w<CR>
@@ -27,14 +31,10 @@ vnoremap ;; <Esc>
 " map start & end
 nnoremap <C-h> ^
 nnoremap <C-l> $
-" TODO: FIX
-" inoremap <C-h> <Esc>I
+inoremap <C-g> <Esc>I
 inoremap <C-l> <Esc>A
 vnoremap <C-h> ^
 vnoremap <C-l> $
-
-" map leader to space 
-let mapleader=" "
 
 " ===
 " === vim-plug
@@ -43,6 +43,9 @@ call plug#begin()
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
+
+" commenter
+Plug 'preservim/nerdcommenter'
 
 " vim theme
 Plug 'tomasiser/vim-code-dark'
@@ -53,6 +56,10 @@ call plug#end()
 " theme config
 colorscheme codedark
 let g:airline_theme = 'codedark'
+
+" commenter
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
 
 " ===
 " ===  coc.nvim
