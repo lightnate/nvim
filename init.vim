@@ -36,6 +36,12 @@ inoremap <C-l> <Esc>A
 vnoremap <C-h> ^
 vnoremap <C-l> $
 
+" window size
+noremap <up> :resize +5<CR>
+noremap <down> :resize -5<CR>
+noremap <left> :vertical resize -5<CR>
+noremap <right> :vertical resize +5<CR>
+
 " ===
 " === vim-plug
 " ===
