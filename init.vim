@@ -63,7 +63,15 @@ Plug 'tomasiser/vim-code-dark'
 Plug 'vim-airline/vim-airline'
 
 " vue
-Plug 'posva/vim-vue'
+Plug 'posva/vim-vue', { 'for': ['vue'] }
+
+" https://github.com/tpope/vim-surround/wiki/%E4%B8%AD%E6%96%87-wiki
+" ysiw" 添加""
+" yss' 为整行添加''
+" cs'" 修改'' 为 ""
+" ds' 删除''
+" VS<p class="flex"> 进入可视模式为选择范围上下添加p标签
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
