@@ -28,6 +28,11 @@ nnoremap S :w<CR>
 inoremap ;; <Esc>
 vnoremap ;; <Esc>
 
+" map copy
+nnoremap <leader>qp "+p
+nnoremap <leader>qP "+P
+nnoremap <leader>qy "+y
+
 " map start & end
 nnoremap <C-h> ^
 nnoremap <C-l> $
