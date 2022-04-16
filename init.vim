@@ -56,7 +56,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
 
 " commenter
-Plug 'preservim/nerdcommenter'
+Plug 'tomtom/tcomment_vim'
 
 " vim theme
 Plug 'tomasiser/vim-code-dark'
@@ -81,27 +81,7 @@ let g:airline_theme = 'codedark'
 " ===
 " === commenter
 " ===
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-let g:ft = ''
-function! NERDCommenter_before()
-  if &ft == 'vue'
-    let g:ft = 'vue'
-    let stack = synstack(line('.'), col('.'))
-    if len(stack) > 0
-      let syn = synIDattr((stack)[0], 'name')
-      if len(syn) > 0
-        exe 'setf ' . substitute(tolower(syn), '^vue_', '', '')
-      endif
-    endif
-  endif
-endfunction
-function! NERDCommenter_after()
-  if g:ft == 'vue'
-    setf vue
-    let g:ft = ''
-  endif
-endfunction
+let g:tcomment_opleader1 = '<leader>c' " use <leader>cc to toggle comment
 
 " ===
 " ===  coc.nvim
@@ -144,12 +124,12 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <c-o> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-o> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-end
+" Use ;o to trigger completion.
+" if has('nvim')
+"   inoremap <silent><expr> ;o coc#refresh()
+" else
+"   inoremap <silent><expr> ;@ coc#refresh()
+" end
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
