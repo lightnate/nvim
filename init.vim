@@ -47,6 +47,14 @@ noremap <down> :resize -5<CR>
 noremap <left> :vertical resize -5<CR>
 noremap <right> :vertical resize +5<CR>
 
+" terminal setting
+" 打开新终端
+noremap <leader>/ :set splitbelow<CR>:split<CR>:res +8<CR>:term<CR>
+" 从终端插入模式恢复到普通模式
+tnoremap ;; <C-\><C-n>
+" 打开已隐藏的终端
+noremap <leader>t :set splitbelow<CR>:split<CR>:res +8<CR>:buffer ter
+
 " ===
 " === vim-plug
 " ===
