@@ -4,5 +4,19 @@
   "suggest.enablePreselect": false,
   "codeLens.enable": true,
   "coc.preferences.formatOnType": true,
-  "coc.preferences.formatOnSaveFiletypes": ["json"]
+  "coc.preferences.formatOnSaveFiletypes": [
+    "json",
+    "javascript",
+    "javascriptreact",
+    "go"
+  ],
+  "diagnostic.errorSign": "❌",
+  "diagnostic.warningSign": "⚠️",
+  "diagnostic.infoSign": "ℹ️",
+  "diagnostic.hintSign": "❕",
+  "diagnostic.refreshOnInsertMode": false,
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.virtualTextPrefix": " ❯❯❯ ",
+  "diagnostic.virtualText": false,
+  "diagnostic.showUnused": true
 }
