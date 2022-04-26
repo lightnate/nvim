@@ -89,8 +89,19 @@ call plug#end()
 " === FZF
 " === Rg: brew install ripgrep
 " ===
-nnoremap <C-p> :Files<CR>
+" fzf file fuzzy search that respects .gitignore
+" If in git directory, show only files that are committed, staged, or unstaged
+" else use regular :Files
+nnoremap <expr> <C-p> (len(system('git rev-parse')) ? ':Files' : ':GFiles --exclude-standard --others --cached')."\<cr>"
+" nnoremap <C-p> :Files<CR>
 nnoremap <C-f> :Rg<CR>
+nnoremap <leader><TAB> :History<CR>
+" command! -bang -nargs=? -complete=dir Files
+"   \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--hidden=1', '--preview', 'cat {}']}, <bang>0)
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --hidden --ignore-file .ignore --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 
 " ===
 " === coc-explorer
