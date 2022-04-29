@@ -47,6 +47,10 @@ noremap <down> :resize -5<CR>
 noremap <left> :vertical resize -5<CR>
 noremap <right> :vertical resize +5<CR>
 
+" buffer
+nnoremap <leader>n :bn<CR>
+nnoremap <leader>p :bn<CR>
+
 " terminal setting
 " 打开新终端
 noremap <leader>/ :set splitbelow<CR>:split<CR>:res +8<CR>:term<CR>
@@ -75,6 +79,8 @@ Plug 'vim-airline/vim-airline'
 " vue
 Plug 'posva/vim-vue', { 'for': ['vue'] }
 
+Plug 'easymotion/vim-easymotion'
+
 " https://github.com/tpope/vim-surround/wiki/%E4%B8%AD%E6%96%87-wiki
 " ysiw" 添加""
 " yss' 为整行添加''
@@ -84,6 +90,25 @@ Plug 'posva/vim-vue', { 'for': ['vue'] }
 Plug 'tpope/vim-surround'
 
 call plug#end()
+
+" ===
+" === airline
+" ===
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = '🐯'
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+" ===
+" === coc-git
+" ===
+" navigate chunks of current buffer
+nmap <leader>gp <Plug>(coc-git-prevchunk)
+nmap <leader>gn <Plug>(coc-git-nextchunk)
+" show chunk diff at current position
+nmap <leader>gs <Plug>(coc-git-chunkinfo)
+" show commit contains current position
+nmap <leader>gc <Plug>(coc-git-commit)
 
 " ===
 " === FZF
