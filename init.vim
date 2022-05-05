@@ -12,6 +12,7 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set shortmess+=c
+set autowrite
 
 " ===
 " === vim map
@@ -49,7 +50,7 @@ noremap <right> :vertical resize +5<CR>
 
 " buffer
 nnoremap <leader>n :bn<CR>
-nnoremap <leader>p :bn<CR>
+nnoremap <leader>p :bp<CR>
 
 " ===
 " === vim-plug
@@ -61,6 +62,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'akinsho/toggleterm.nvim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " commenter
 Plug 'tomtom/tcomment_vim'
@@ -101,9 +103,11 @@ tnoremap <Esc> <C-\><C-n>:q<CR>
 " === airline
 " ===
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = '🐯'
-let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#left_sep = '🐼'
+let g:airline_detect_modified=1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_theme = 'codedark'
+let g:airline_section_b = "%{get(g:,'coc_git_status')}"
 
 " ===
 " === coc-git
@@ -143,7 +147,6 @@ nnoremap <leader>e :CocCommand explorer<CR>
 " === vim config
 " ===
 colorscheme codedark
-let g:airline_theme = 'codedark'
 
 " ===
 " === commenter
@@ -157,6 +160,8 @@ let g:tcomment_opleader1 = '<leader>c' " use <leader>cc to toggle comment
 let g:coc_global_extensions = [
 	\ 'coc-git',
 	\ 'coc-css',
+	\ 'coc-go',
+	\ 'coc-sql',
 	\ 'coc-actions',
 	\ 'coc-diagnostic',
 	\ 'coc-eslint',
