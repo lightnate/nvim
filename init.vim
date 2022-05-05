@@ -51,14 +51,6 @@ noremap <right> :vertical resize +5<CR>
 nnoremap <leader>n :bn<CR>
 nnoremap <leader>p :bn<CR>
 
-" terminal setting
-" 打开新终端
-noremap <leader>/ :set splitbelow<CR>:split<CR>:res +8<CR>:term<CR>
-" 从终端插入模式恢复到普通模式
-tnoremap ;; <C-\><C-n>
-" 打开已隐藏的终端
-noremap <leader>t :set splitbelow<CR>:split<CR>:res +8<CR>:buffer ter
-
 " ===
 " === vim-plug
 " ===
@@ -68,6 +60,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'akinsho/toggleterm.nvim'
 
 " commenter
 Plug 'tomtom/tcomment_vim'
@@ -90,6 +83,19 @@ Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 
 call plug#end()
+
+" ===
+" === toggleterm
+" ===
+" 打开默认终端
+noremap <leader>` :ToggleTerm direction=float<CR>
+" 使用 1<leader>` 打开 1终端
+autocmd TermEnter term://*toggleterm#*
+	\ tnoremap <silent><leader>` <Cmd>exe v:count1 . "ToggleTerm"<CR>
+" 从终端插入模式恢复到普通模式
+tnoremap ;; <C-\><C-n>
+" 隐藏终端
+tnoremap <Esc> <C-\><C-n>:q<CR>
 
 " ===
 " === airline
