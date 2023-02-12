@@ -1,17 +1,7 @@
 {
 	"codeLens.enable": true,
 	"coc.preferences.extensionUpdateCheck": "daily",
-	"coc.preferences.formatOnSaveFiletypes": [
-		"html",
-		"css",
-		"json",
-		"javascript",
-		"javascriptreact",
-		"typescript",
-		"typescriptreact",
-		"go"
-	],
-	"suggest.noselect": true,
+	"coc.preferences.formatOnSave": true,
 	"suggest.enablePreselect": false,
 	"suggest.completionItemKindLabels": {
 		"class": "\uf0e8",
