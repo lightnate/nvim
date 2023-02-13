@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 local keyset = vim.keymap.set
 
 -- Save & Quit
-keyset("n", "<C-w>", ":w<CR>")
+keyset("n", "<C-s>", ":w<CR>")
 keyset("n", "<C-q>", ":q<CR>")
 
 -- Esc
