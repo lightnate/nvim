@@ -32,6 +32,7 @@ M.setup_treesitter_configs = function()
 			"tsx",
 			"typescript",
 			"vue",
+			"dart",
 		},
 		highlight = {
 			enable = true,

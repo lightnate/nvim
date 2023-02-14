@@ -23,6 +23,7 @@ function M.init()
 		"coc-yaml",
 		"coc-xml",
 		"coc-sh",
+		"coc-flutter",
 	}
 
   local keyset = vim.keymap.set
@@ -51,8 +52,8 @@ function M.init()
   -- Use `[g` and `]g` to navigate diagnostics
   -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
 	-- [g 和 ]g 跳转错误
-  keyset("n", "[g", "<Plug>(coc-diagnostic-prev)", {silent = true})
-  keyset("n", "]g", "<Plug>(coc-diagnostic-next)", {silent = true})
+  keyset("n", "[e", "<Plug>(coc-diagnostic-prev)", {silent = true})
+  keyset("n", "]e", "<Plug>(coc-diagnostic-next)", {silent = true})
 
   -- GoTo code navigation
 	-- <leader>d: 跳转定义
@@ -62,7 +63,7 @@ function M.init()
   keyset("n", "<leader>d", "<Plug>(coc-definition)", {silent = true})
   keyset("n", "<leader>td", "<Plug>(coc-type-definition)", {silent = true})
   keyset("n", "<leader>i", "<Plug>(coc-implementation)", {silent = true})
-  keyset("n", "<leade>re", "<Plug>(coc-references)", {silent = true})
+  keyset("n", "<leader>re", "<Plug>(coc-references)", {silent = true})
 
   -- Use K to show documentation in preview window
 	-- K查看文档
