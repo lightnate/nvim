@@ -4,6 +4,7 @@ function M.init()
 	local builtin = require "telescope.builtin"
 	vim.keymap.set('n', '<C-p>', builtin.find_files, {})
 	vim.keymap.set('n', '<C-f>', builtin.live_grep, {})
+	vim.keymap.set('n', '<C-;>', builtin.oldfiles, {})
 	
 	local actions = require "telescope.actions"
 	
