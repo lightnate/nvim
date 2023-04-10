@@ -1,7 +1,7 @@
 {
 	"codeLens.enable": true,
 	"coc.preferences.extensionUpdateCheck": "daily",
-	"coc.preferences.formatOnSave": true,
+	"coc.preferences.formatOnSave": false,
 	"suggest.enablePreselect": false,
 	"suggest.completionItemKindLabels": {
 		"class": "\uf0e8",

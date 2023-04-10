@@ -8,11 +8,11 @@ keyset("n", "<C-s>", ":w<CR>")
 keyset("n", "<C-q>", ":q<CR>")
 
 -- Esc
-keyset("i", ";;", "<Esc>")
-keyset("v", ";;", "<Esc>")
+keyset("i", "<C-;>", "<Esc>")
+keyset("v", "<C-;>", "<Esc>")
 
 -- nextline
-keyset("i", "<C-;>", "<Esc>o")
+keyset("i", "<C-j>", "<Esc>o")
 
 -- start & end
 keyset("n", "<C-h>", "^")

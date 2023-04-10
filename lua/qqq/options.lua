@@ -16,5 +16,5 @@ opt.softtabstop = 2
 opt.shiftwidth = 2
 opt.updatetime = 150
 opt.signcolumn = "yes"
-opt.clipboard = "unnamedplus"
+-- opt.clipboard = "unnamedplus"
 
